@@ -11,12 +11,17 @@ import java.util.Scanner;
 
 public class Cofrinho {
 
+    // declarando a variável que guarda as moedas em um array
     private final ArrayList<Moeda> listaMoeda;
 
+
+    // inicializando a variável através da instância do objeto Cofrinho
     public Cofrinho() {
         listaMoeda = new ArrayList<>();
     }
 
+
+    // Método publico utilizado para chamadas de todos outros métodos, esse método controla o sistema de cofrinho
     public void sistemaCofrinho() {
         boolean condicional = true;
         while (condicional) {
@@ -52,6 +57,7 @@ public class Cofrinho {
     }
 
 
+    // Método que faz o cálculo de todos valores para conversão em real
     public void converterTotalReal() {
         double total = 0.0;
         for(Moeda moeda: listaMoeda) {
@@ -60,6 +66,8 @@ public class Cofrinho {
         System.out.printf("Total convertido R$ %.2f%n\n", total);
     }
 
+
+    // Método interno para controlar a instanciação das moedas, de modo que siga o menu
     private Moeda instanceMoeda () {
         Moeda moeda = null;
         int optionMoeda = this.optionMenuMoedas();
@@ -81,6 +89,8 @@ public class Cofrinho {
         return  moeda;
     }
 
+
+    // Método para adicionar as moedas no Array e imprimir o nome da moedas
     public void adicionarMoeda(Moeda moeda) {
         String [] valor = moeda.getClass().getName().split("\\.");
         String nomeMoeda = valor[valor.length -1];
@@ -88,12 +98,15 @@ public class Cofrinho {
         this.listaMoeda.add(moeda);
     }
 
+    // método para listagem de moedas com info abstract
     public void listarMoedas() {
         for(Moeda moeda: listaMoeda) {
             moeda.info();
         }
     }
 
+
+    // Método para remover a moeda utilizando Predicate
     public void removerMoeda() {
         int menuMoeda = this.optionMenuMoedas();
         double valor = inputValor();
@@ -115,6 +128,8 @@ public class Cofrinho {
 
     }
 
+
+    // metodo para imprimir o menu de operacao
     private int optionMenuOperacao() {
         Scanner input = new Scanner(System.in);
         int option = -1;
@@ -140,6 +155,8 @@ public class Cofrinho {
 
 
 
+
+    // método para imprimir o menu moedas
     private int optionMenuMoedas() {
         Scanner input = new Scanner(System.in);
         int option = 0;
@@ -165,6 +182,8 @@ public class Cofrinho {
         return option;
     }
 
+
+    // método para solicitar o input de valor
     private double inputValor() {
         Scanner input = new Scanner(System.in);
         double valor = 0.0;

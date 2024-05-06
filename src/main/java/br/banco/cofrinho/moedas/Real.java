@@ -1,5 +1,6 @@
 package br.banco.cofrinho.moedas;
 
+// classe Dolar que está herdando Moeda
 public class Real extends Moeda {
 
     public Real(double valor) {
